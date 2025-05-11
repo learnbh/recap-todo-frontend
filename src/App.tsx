@@ -17,9 +17,7 @@ function App() {
             .catch((error)=> console.log(error))
     }
 
-    useEffect(() => {
-        getAllData();
-    }, []);
+    useEffect(() => (getAllData()), []);
 
     if(!allTodos){
         return "Load data ..."
