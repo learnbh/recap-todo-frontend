@@ -1,5 +1,5 @@
 import axios from "axios";
-import type {AddDescriptionType, AddStatusType, AddTodoType} from "../types/types.ts";
+import type {DescriptionType, StatusType, TodoType} from "../types/types.ts";
 import {type ChangeEvent, type FormEvent, useState} from "react";
 import {useNavigate} from "react-router-dom";
 
@@ -12,10 +12,10 @@ type AddTodoProp = {
 export default function AddTodo(prop:AddTodoProp){
     const navigateTo = useNavigate();
 
-    const [description, setDescription] = useState<AddDescriptionType>({
+    const [description, setDescription] = useState<DescriptionType>({
         description: ""
     });
-    const [status, setStatus] = useState<AddStatusType>({
+    const [status, setStatus] = useState<StatusType>({
         status: ""
     });
     function handleChangeInput(e:ChangeEvent<HTMLInputElement>){
@@ -25,7 +25,7 @@ export default function AddTodo(prop:AddTodoProp){
         setStatus({...status, status: e.target.value});
     }
     function addTodo(){
-        const newTodo:AddTodoType = {
+        const newTodo:TodoType = {
             description: description.description,
             status: status.status
         }
