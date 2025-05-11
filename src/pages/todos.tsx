@@ -27,6 +27,7 @@ export default function Todos(props: TodosProps ){
                         key={t.id}
                         todo={t}
                         showDetails={true}
+                        reloadTodos={props.getAllTodos}
                         className="w-min flex flex-col flex-wrap text-start content-between bg-blue-600 border-white border-2 border-solid p-5 m-3 rounded-xl"
                     />)}
                 </div>
