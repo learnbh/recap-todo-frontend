@@ -9,7 +9,7 @@ import {useParams} from "react-router-dom";
 
 type TodoEditProps = {
     todos: FullTodoType[]
-    getAllTodos: ()=>void,
+    reloadTodos: ()=>void,
 }
 export default function TodoEdit(props:TodoEditProps){
     const todoId = useParams();
@@ -28,7 +28,7 @@ export default function TodoEdit(props:TodoEditProps){
                     <EditTodo
                         key={t.id}
                         todo={t}
-                        getAllTodos={props.getAllTodos}
+                        reloadTodos={props.reloadTodos}
                     />)}
             </main>
             <footer>

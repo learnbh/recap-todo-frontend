@@ -5,7 +5,7 @@ import {useNavigate} from "react-router-dom";
 
 type TodoEditProps = {
     todo: FullTodoType
-    getAllTodos: ()=>void,
+    reloadTodos: ()=>void,
 }
 
 export default function EditTodo(prop:TodoEditProps){
@@ -29,7 +29,8 @@ export default function EditTodo(prop:TodoEditProps){
             description: description.description,
             status: status.status
         }
-        axios.put("/api/todo/"+prop.todo.id+"/update", editedTodo).then(r=> console.log(r.data))
+        axios.put("/api/todo/"+prop.todo.id+"/update", editedTodo)
+            .then(prop.reloadTodos)
             .catch(error=> console.log(error))
     }
     function handleSubmit(e:FormEvent<HTMLFormElement>){
@@ -39,7 +40,6 @@ export default function EditTodo(prop:TodoEditProps){
             editTodo();
             setDescription({description: prop.todo.description});
             setStatus({status: prop.todo.status});
-            prop.getAllTodos();
             navigateTo("/");
         }
         else {
