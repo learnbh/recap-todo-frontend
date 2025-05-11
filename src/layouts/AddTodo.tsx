@@ -36,8 +36,8 @@ export default function AddTodo(prop:AddTodoProp){
     }
     function handleSubmit(e:FormEvent<HTMLFormElement>){
         e.preventDefault();
-        if ((description.description !== prop.descriptionPlaceholder || description.description !== "") &&
-            (status.status !== prop.statusPlaceholder)) {
+        if ((description.description !== "") &&
+            (status.status !== "")) {
             addTodo();
             setDescription({
                 description: prop.descriptionPlaceholder
