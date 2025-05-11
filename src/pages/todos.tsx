@@ -17,7 +17,7 @@ export default function Todos(props: TodosProps ){
     return(
         <>
             <header className=" bg-blend-color bg-blue-800">
-                <Title/>
+                <Title title={"Welcome to your todos"}/>
             </header>
             <main className="p-2 bg-blue-700">
                 <div className="flex flex-row justify-evenly">
@@ -33,7 +33,7 @@ export default function Todos(props: TodosProps ){
                     )}
                 </div>
             </main>
-            <footer className="p-1 bg-blue-800">
+            <footer className="p-2 bg-blue-800">
                 <Footer/>
             </footer>
         </>

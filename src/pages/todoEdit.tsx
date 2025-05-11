@@ -1,10 +1,10 @@
-import Title from "../components/title.tsx";
 import MainNaviBar from "../components/navigation.tsx";
 import Footer from "../components/footer.tsx";
 import EditTodo from "../layouts/EditTodo.tsx";
 import AddTodoButton from "../components/addTodoButton.tsx";
 import type {FullTodoType} from "../types/types.ts";
 import {useParams} from "react-router-dom";
+import Title from "../components/title.tsx";
 
 
 type TodoEditProps = {
@@ -16,12 +16,11 @@ export default function TodoEdit(props:TodoEditProps){
     return(
         <>
             <header className="">
-                <Title/>
+                <Title title={"Edit your Todo"}/>
                 <MainNaviBar/>
             </header>
             <main className="m-2">
                 <div className="flex flex-row justify-evenly">
-                    <h1>Todo Details</h1>
                     <AddTodoButton/>
                 </div>
                 {props.todos.filter((t:FullTodoType) => (t.id === todoId.id)).map((t:FullTodoType) =>
@@ -31,7 +30,7 @@ export default function TodoEdit(props:TodoEditProps){
                         reloadTodos={props.reloadTodos}
                     />)}
             </main>
-            <footer>
+            <footer className="p-2 border-t-1">
                 <Footer/>
             </footer>
         </>
