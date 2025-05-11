@@ -15,4 +15,7 @@ export type TodoType = {
     status:string
 };
 
-//export type TodoStatusEnum = "OPEN" | "IN_PROGRESS" | "DONE" ;
+export type TodoStatus = "OPEN" | "IN_PROGRESS" | "DONE";
+
+export const TodoStatusAll:TodoStatus[] =
+    ["OPEN", "IN_PROGRESS", "DONE"];

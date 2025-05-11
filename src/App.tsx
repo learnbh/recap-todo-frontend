@@ -1,11 +1,13 @@
 import './App.css'
+import axios from "axios";
 import {Route, Routes} from "react-router-dom";
+import {useEffect, useState} from "react";
+
+import type {FullTodoType} from "./types/types.ts";
+
 import Todos from "./pages/todos.tsx";
 import TodoAdd from "./pages/todoAdd.tsx";
 import TodoDetails from "./pages/todoDetails.tsx";
-import {useEffect, useState} from "react";
-import type {FullTodoType} from "./types/types.ts";
-import axios from "axios";
 import TodoEdit from "./pages/todoEdit.tsx";
 
 function App() {
@@ -29,7 +31,7 @@ function App() {
           <Route path={"/"} element={<Todos todos={allTodos} reloadTodos={getAllData}/>}></Route>
           <Route path={"/add"} element={<TodoAdd reloadTodos={getAllData}/>}></Route>
           <Route path={"/edit/:id"} element={<TodoEdit todos={allTodos} reloadTodos= {getAllData}/>}></Route>
-          <Route path={"/:id"} element={<TodoDetails todos={allTodos}/>}></Route>
+          <Route path={"/:id"} element={<TodoDetails todos={allTodos} reloadTodos={getAllData}/>}></Route>
       </Routes>
     </>
   )

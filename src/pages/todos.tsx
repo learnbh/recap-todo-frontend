@@ -1,8 +1,8 @@
 import Title from "../components/title.tsx";
 import Footer from "../components/footer.tsx";
 import AddTodoButton from "../components/addTodoButton.tsx";
-import type {FullTodoType} from "../types/types.ts";
-import TodoCard from "../layouts/TodoCard.tsx";
+import {type FullTodoType, type TodoStatus, TodoStatusAll} from "../types/types.ts";
+import TodoStatusColumn from "../layouts/TodoStatusColumn.tsx";
 
 type TodosProps= {
     todos: FullTodoType[]
@@ -10,6 +10,10 @@ type TodosProps= {
 }
 
 export default function Todos(props: TodosProps ){
+
+    function getTodosWithStatus(status:TodoStatus):FullTodoType[]{
+        return props.todos.filter((t:FullTodoType) => t.status === status)
+    }
     return(
         <>
             <header className=" bg-blend-color bg-blue-800">
@@ -17,17 +21,16 @@ export default function Todos(props: TodosProps ){
             </header>
             <main className="p-2 bg-blue-700">
                 <div className="flex flex-row justify-evenly">
-                    <h1>All Todos</h1>
                     <AddTodoButton/>
                 </div>
                 <div className=" flex flex-row flex-wrap m-5">
-                    {props.todos.map((t:FullTodoType)=><TodoCard
-                        key={t.id}
-                        todo={t}
-                        showDetails={true}
-                        reloadTodos={props.reloadTodos}
-                        className="w-min flex flex-col flex-wrap text-start content-between bg-blue-600 border-white border-2 border-solid p-5 m-3 rounded-xl"
-                    />)}
+                    {TodoStatusAll.map((status:TodoStatus)=>
+                        <TodoStatusColumn key={status}
+                                          status={status}
+                                          todos={getTodosWithStatus(status)}
+                                          reloadTodos={props.reloadTodos}
+                        />
+                    )}
                 </div>
             </main>
             <footer className="p-1 bg-blue-800">

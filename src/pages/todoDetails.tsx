@@ -8,6 +8,7 @@ import AddTodoButton from "../components/addTodoButton.tsx";
 
 type TodoDetailsProps = {
     todos: FullTodoType[]
+    reloadTodos: () => void;
 }
 
 export default function TodoDetails(props:TodoDetailsProps){
@@ -29,6 +30,7 @@ export default function TodoDetails(props:TodoDetailsProps){
                     key={t.id}
                     todo={t}
                     showDetails={false}
+                    reloadTodos={props.reloadTodos}
                     className="w-full flex flex-col flex-wrap text-start content-between bg-blue-600 border-white border-2 border-solid p-5 m-3 rounded-xl"
                 />)}
             </main>
