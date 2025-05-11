@@ -5,6 +5,7 @@ import axios from "axios";
 type TodoCardProp = {
     todo: FullTodoType,
     showDetails: boolean,
+    reloadTodos:()=>void,
     className?:string,
 }
 
@@ -20,7 +21,7 @@ export default function TodoCard(prop:TodoCardProp){
 
     function handleDelete(){
         axios.delete("api/todo/"+prop.todo.id)
-            .then(r=>r.data)
+            .then(prop.reloadTodos)
             .catch((error)=> console.log(error))
         navigateTo("/");
     }
