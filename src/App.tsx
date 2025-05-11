@@ -26,8 +26,8 @@ function App() {
     return (
     <>
       <Routes>
-          <Route path={"/"} element={<Todos todos={allTodos} getAllTodos={getAllData}/>}></Route>
-          <Route path={"/add"} element={<TodoAdd/>}></Route>
+          <Route path={"/"} element={<Todos todos={allTodos} reloadTodos={getAllData}/>}></Route>
+          <Route path={"/add"} element={<TodoAdd reloadTodos={getAllData}/>}></Route>
           <Route path={"/edit/:id"} element={<TodoEdit todos={allTodos} getAllTodos= {getAllData}/>}></Route>
           <Route path={"/:id"} element={<TodoDetails todos={allTodos}/>}></Route>
       </Routes>
