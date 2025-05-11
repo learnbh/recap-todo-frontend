@@ -6,6 +6,7 @@ import {useNavigate} from "react-router-dom";
 type AddTodoProp = {
     descriptionPlaceholder:string,
     statusPlaceholder:string
+    reloadTodos:()=>void,
 }
 
 
@@ -29,7 +30,8 @@ export default function AddTodo(prop:AddTodoProp){
             description: description.description,
             status: status.status
         }
-        axios.post("/api/todo", newTodo).then(r=> console.log(r.data))
+        axios.post("/api/todo", newTodo)
+            .then(prop.reloadTodos)
             .catch(error=> console.log(error))
     }
     function handleSubmit(e:FormEvent<HTMLFormElement>){

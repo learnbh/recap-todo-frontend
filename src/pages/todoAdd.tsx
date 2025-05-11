@@ -3,8 +3,11 @@ import MainNaviBar from "../components/navigation.tsx";
 import Footer from "../components/footer.tsx";
 import AddTodo from "../layouts/AddTodo.tsx";
 
+type Props = {
+    reloadTodos: ()=>void,
+};
 
-export default function TodoAdd(){
+export default function TodoAdd(props:Props){
     return(
         <>
             <header className="">
@@ -15,6 +18,7 @@ export default function TodoAdd(){
                 <AddTodo
                     descriptionPlaceholder="Enter the description here!"
                     statusPlaceholder="Choose a status!"
+                    reloadTodos={props.reloadTodos}
                 />
             </main>
             <footer>
