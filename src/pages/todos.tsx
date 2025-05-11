@@ -3,11 +3,10 @@ import Footer from "../components/footer.tsx";
 import AddTodoButton from "../components/addTodoButton.tsx";
 import type {FullTodoType} from "../types/types.ts";
 import TodoCard from "../layouts/TodoCard.tsx";
-import MainNaviBar from "../components/navigation.tsx";
 
 type TodosProps= {
     todos: FullTodoType[]
-    getAllTodos: ()=>void;
+    reloadTodos: ()=>void;
 }
 
 export default function Todos(props: TodosProps ){
@@ -15,7 +14,6 @@ export default function Todos(props: TodosProps ){
         <>
             <header className=" bg-blend-color bg-blue-800">
                 <Title/>
-                <MainNaviBar/>
             </header>
             <main className="p-2 bg-blue-700">
                 <div className="flex flex-row justify-evenly">
@@ -27,7 +25,7 @@ export default function Todos(props: TodosProps ){
                         key={t.id}
                         todo={t}
                         showDetails={true}
-                        reloadTodos={props.getAllTodos}
+                        reloadTodos={props.reloadTodos}
                         className="w-min flex flex-col flex-wrap text-start content-between bg-blue-600 border-white border-2 border-solid p-5 m-3 rounded-xl"
                     />)}
                 </div>
